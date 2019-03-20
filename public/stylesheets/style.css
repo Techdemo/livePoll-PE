@@ -1,0 +1,19 @@
+
+:root{
+  /* futura wordt de font family */
+  --background-main: #e1e8f0;
+  --background-main-font: #000036;
+  --action: #e62739;
+  --purple: #9068be;
+}
+
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
