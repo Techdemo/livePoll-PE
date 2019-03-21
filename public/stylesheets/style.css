@@ -1,19 +1,27 @@
-
 :root{
   /* futura wordt de font family */
   --background-main: #e1e8f0;
   --background-main-font: #000036;
   --action: #e62739;
   --purple: #9068be;
+   --heading-size: calc(32px + (48 - 24) * ((100vw - 300px) / (1600 - 300)));
+  --paragraph-size: calc(22px + (28 - 16) * ((100vw - 300px) / (1600 - 300)));
 }
-
+html {
+ font-size: 100%;
+ -webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--paragraph-size);
+  background-color: var(--background-main);
 }
-
 a {
   color: #00B7FF;
 }
-
+h1 {
+  font-size: var(--heading-size);
+}
 

@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var formRouter = require('./routes/form');
+var teacherRouter = require('./routes/teacher');
 
 var app = express();
 
@@ -25,11 +25,15 @@ app.use(express.urlencoded({
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/teacher', teacherRouter);
 
 
 function processData(req, res){
   let data = req.body.opt
-  res.render('index', {title: data})
+  console.log(data)
+  res.render('submitted', {
+    title: 'thnx for your submission',
+    data: data})
 }
 app.post('/', processData)
 
