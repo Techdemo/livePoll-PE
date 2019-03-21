@@ -1,14 +1,16 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const config = require('./config');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var teacherRouter = require('./routes/teacher');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const teacherRouter = require('./routes/teacher');
+const questionRouter = require('./routes/question.route'); // Imports routes for the questions
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,9 +25,20 @@ app.use(express.urlencoded({
   extended: true
 }));
 
+// Set up mongoose connection
+const mongoose = require('mongoose');
+let dev_db_url = config.MONGODB_URI;
+let mongoDB = process.env.MONGODB_URI || dev_db_url;
+mongoose.connect(mongoDB, { useNewUrlParser: true });
+mongoose.Promise = global.Promise;
+let db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+// importing routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/teacher', teacherRouter);
+app.use('/question', questionRouter)
 
 
 function processData(req, res){
