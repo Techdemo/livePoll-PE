@@ -1,14 +1,26 @@
 const Question = require('../models/question.js');
+const express = require('express');
+const bodyParser  = require('body-parser')
+const mongoose = require('mongoose');
+const fetch = require('node-fetch');
+
 
 //Simple version, without validation or sanitation
 exports.test = function (req, res) {
     res.send('Greetings from the Test controller!');
 };
-exports.question_create = function (req, res) {
+
+// maak een vraag
+exports.question_create = function (req, res, next) {
     let question = new Question(
         {
-            food: req.body.name,
-            foodOption: req.body.price
+            question: req.body.question,
+            answerOne: req.body.answerOne,
+            answerOnePoints: req.body.answerOnePoints,
+            answerTwo: req.body.answerTwo,
+            answerTwoPoints: req.body.answerTwoPoints,
+            answerThree: req.body.answerThree,
+            answerThreePoints: req.body.answerThreePoints
         }
     );
     question.save(function (err) {
@@ -18,21 +30,61 @@ exports.question_create = function (req, res) {
         res.send('Question Created successfully')
     })
 };
-exports.question_details = function (req, res) {
+// vraag een vraag op
+exports.question_details = function (req, res, next) {
     Question.findById(req.params.id, function (err, question) {
         if (err) return next(err);
         res.send(question);
     })
 };
+// update een vraag
 exports.question_update = function (req, res) {
     Question.findByIdAndUpdate(req.params.id, { $set: req.body }, function (err, question) {
         if (err) return next(err);
         res.send('Question updated');
     });
 };
-exports.question_delete = function (req, res) {
+// verwijder een vraag
+exports.question_delete = function (req, res, next) {
     Question.findByIdAndRemove(req.params.id, function (err) {
         if (err) return next(err);
         res.send('Deleted successfully!');
     })
 };
+
+
+exports.question_vote = function (req, res, next) {
+    let data = req.body
+    let dataOpt = data.opt
+    console.log("dataOPt", dataOpt)
+    Question.findByIdAndUpdate('5c98dd88a2d6bccb5df225a3', {
+        $inc: { [dataOpt]: 1 } },
+        { new: true },
+            function (err, response) {
+                if (err) return next(err)
+                console.log(response)
+                res.render('submitted', {
+                    title: 'thnx for your submission',
+                    data: dataOpt,
+                    response: response
+            })
+        });
+    };
+exports.question_overview = (req, res, next) => {
+    try {
+        fetch('http://localhost:3000/question/5c98dd88a2d6bccb5df225a3')
+            .then(res => {return res.json()})
+            .then(data => {
+                console.log(data)
+                res.render('chart', {
+                    title: "dit zijn de uitslagen tot nu toe",
+                    data: data,
+                    tag: "javascript staat uit"
+                })
+            })
+        }
+    catch(err) {
+       return next(err)
+    }
+    console.log("dikke feest")
+}

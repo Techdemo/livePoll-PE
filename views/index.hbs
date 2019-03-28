@@ -1,20 +1,20 @@
 <h1>{{title}}</h1>
+
 <div>
-    <p>Hier komen de results, maar die gaan uiteindeijk wel weg.</p>
-</div>
-<div>
-    <form method="post" action="/">
+    <form method="post" action="/question/vote">
     <fieldset>
-        <legend>Wat vind je van de kleur Blauw?</legend>
+        <legend>{{question.question}}</legend>
 
-        <input type="radio" value="mooi" id="mooi" name="opt">
-        <label for="mooi">mooi!</label><br />
+        <input type="radio" value="answerOnePoints" id="{{question.answerOne}}" name="opt">
+        <label for="mooi">{{question.answerOne}}</label><br />
 
-        <input type="radio" value="Mwua" id="mwua" name="opt">
-        <label for="mwua">mwua</label><br />
+        <input type="radio" value="answerTwoPoints" id="{{question.answerTwo}}" name="opt">
+        <label for="mwua">{{question.answerTwo}}</label><br />
 
-        <input type="radio" value="Lelijk" id="lelijk" name="opt">
-        <label for="lelijk">lelijk</label>
+        <input type="radio" value="answerThreePoints" id="{{question.answerThree}}" name="opt">
+        <label for="lelijk">{{question.answerThree}}</label>
+
+        <input type="text" style="display: none" name="id" value="{{ _id }}">
     </fieldset>
     <div class="button">
       <button type="submit">Verstuur je antwoord</button>

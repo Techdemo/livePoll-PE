@@ -1,3 +1,19 @@
 <h2>{{ title }}</h2>
 <h3>Je keuze was {{ data }}</h3>
 <p> je leraar laat je weten wanneer de keuze is gemaakt.</p>
+<section>
+    {{#if response}}
+        <h3>Dit zijn alle resultaten tot nu toe:</h3>
+            <ul>
+                <li>
+                   <p>{{response.answerOne}}: {{response.answerOnePoints}}</p>
+                </li>
+                <li>
+                    <p>{{ response.answerTwo}}: {{response.answerTwoPoints}}</p>
+                </li>
+                <li>
+                    <p>{{ response.answerThree}}: {{response.answerThreePoints}}</p>
+                </li>
+            </ul>
+    {{/if}}
+</section>

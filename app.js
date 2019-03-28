@@ -4,17 +4,21 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const config = require('./config');
+const hbs = require('hbs');
+const app = express();
+
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const teacherRouter = require('./routes/teacher');
 const questionRouter = require('./routes/question.route'); // Imports routes for the questions
 
-const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+
 app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
+hbs.registerPartials(__dirname + '/views/partials');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -40,15 +44,6 @@ app.use('/users', usersRouter);
 app.use('/teacher', teacherRouter);
 app.use('/question', questionRouter)
 
-
-function processData(req, res){
-  let data = req.body.opt
-  console.log(data)
-  res.render('submitted', {
-    title: 'thnx for your submission',
-    data: data})
-}
-app.post('/', processData)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
