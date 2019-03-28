@@ -6,6 +6,14 @@ const logger = require('morgan');
 const config = require('./config');
 const hbs = require('hbs');
 const app = express();
+const socket_io = require("socket.io");
+
+var io = socket_io();
+app.io = io;
+
+var routes = require('./controllers/index');
+
+module.exports = app;
 
 
 const indexRouter = require('./routes/index');

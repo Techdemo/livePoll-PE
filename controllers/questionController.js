@@ -3,6 +3,11 @@ const express = require('express');
 const bodyParser  = require('body-parser')
 const mongoose = require('mongoose');
 const fetch = require('node-fetch');
+const app = express();
+const socket_io = require("socket.io");
+
+const io = socket_io();
+app.io = io;
 
 
 //Simple version, without validation or sanitation
@@ -54,15 +59,14 @@ exports.question_delete = function (req, res, next) {
 
 
 exports.question_vote = function (req, res, next) {
+    io.emit('test');
     let data = req.body
     let dataOpt = data.opt
-    console.log("dataOPt", dataOpt)
     Question.findByIdAndUpdate('5c98dd88a2d6bccb5df225a3', {
         $inc: { [dataOpt]: 1 } },
         { new: true },
             function (err, response) {
                 if (err) return next(err)
-                console.log(response)
                 res.render('submitted', {
                     title: 'thnx for your submission',
                     data: dataOpt,
@@ -75,7 +79,6 @@ exports.question_overview = (req, res, next) => {
         fetch('http://localhost:3000/question/5c98dd88a2d6bccb5df225a3')
             .then(res => {return res.json()})
             .then(data => {
-                console.log(data)
                 res.render('chart', {
                     title: "dit zijn de uitslagen tot nu toe",
                     data: data,
@@ -86,5 +89,4 @@ exports.question_overview = (req, res, next) => {
     catch(err) {
        return next(err)
     }
-    console.log("dikke feest")
 }

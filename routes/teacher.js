@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 let http = require('http').Server(express);
-
-
+const socket_io = require("socket.io");
+const app = express();
 const question_controller = require('../controllers/questionController');
 
 
