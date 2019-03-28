@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const config = require('config.js');
+const Config = require('./Config');
 const hbs = require('hbs');
 const app = express();
 const socket_io = require("socket.io");
@@ -12,8 +12,6 @@ var io = socket_io();
 app.io = io;
 
 var routes = require('./controllers/index');
-
-module.exports = app;
 
 
 const indexRouter = require('./routes/index');
@@ -39,7 +37,7 @@ app.use(express.urlencoded({
 
 // Set up mongoose connection
 const mongoose = require('mongoose');
-let dev_db_url = config.MONGODB_URI;
+let dev_db_url = Config.MONGODB_URI;
 let mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
