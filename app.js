@@ -13,7 +13,6 @@ app.io = io;
 
 var routes = require('./controllers/index');
 
-
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const teacherRouter = require('./routes/teacher');
