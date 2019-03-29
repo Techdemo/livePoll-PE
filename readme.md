@@ -3,7 +3,7 @@ The assignment was to make a Live Poll with Progressive Enhancement in mind.
 In a poll, users can cast their vote on a question asked by one person.
 Voting results are to be displayed on a central page. The results live update on the page. although that one is not a core functionality.
 
-![Front screen of the app]("https://raw.githubusercontent.com/Techdemo/livePoll-PE/master/assets/screen.png")
+![Front screen of the app](https://raw.githubusercontent.com/Techdemo/livePoll-PE/master/assets/screen.png)
 
 ## Achievements
 This list displays the inner workings on my way of working on this application.
