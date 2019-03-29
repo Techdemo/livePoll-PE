@@ -84,4 +84,5 @@ This assignment was made with PE in mind. The challenge is to make a progressive
 - HTML on itself can be strong foundation for your application
 - Progressive enhancement is more of a conceptual way of thinking. Not just technically.
 
-
+### wireframes
+![alt text](assets/without css compression.png "without css compression")
