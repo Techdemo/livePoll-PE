@@ -85,4 +85,4 @@ This assignment was made with PE in mind. The challenge is to make a progressive
 - Progressive enhancement is more of a conceptual way of thinking. Not just technically.
 
 ### wireframes
-![alt text](assets/without css compression.png "without css compression")
+![Front screen of the app](https://raw.githubusercontent.com/Techdemo/livePoll-PE/master/assets/screen.png)
