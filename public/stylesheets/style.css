@@ -21,7 +21,7 @@ body {
   font-size: var(--paragraph-size);
 }
 a {
-  color: #00B7FF;
+  color: var(--action);
 }
 h1 {
   font-size: var(--heading-size);

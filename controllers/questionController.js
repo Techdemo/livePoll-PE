@@ -57,7 +57,7 @@ exports.question_delete = function (req, res, next) {
     })
 };
 
-
+// breng een stem uit
 exports.question_vote = function (req, res, next) {
     io.emit('test');
     let data = req.body
