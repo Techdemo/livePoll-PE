@@ -1,11 +1,11 @@
-#live poll - PE
+# live poll - PE
 The assignment was to make a Live Poll with Progressive Enhancement in mind.
 In a poll, users can cast their vote on a question asked by one person.
 Voting results are to be displayed on a central page. The results live update on the page. although that one is not a core functionality.
 
-![alt text](assets/without css compression.png "without css compression")
+![Front screen of the app](https://raw.githubusercontent.com/Techdemo/livePoll-PE/master/assets/screen.png")
 
-##Achievements
+## Achievements
 This list displays the inner workings on my way of working on this application.
 
 ### Form submit
@@ -73,7 +73,7 @@ This assignment was made with PE in mind. The challenge is to make a progressive
 - If the meta tag does not work, users can manually refresh the page to fetch the vote results.
 - When everything is working. Users get to see a full blown data chart in which the votes get pushed realtime.
 
-##Mistakes I've made
+## Mistakes I've made
 - Did not started with wireframes. Write this sentence down in a tile in your bathroom: "Think first, code after"
 - focused too much on making EVERYTHING SERVER SIDE. This way of thinking is not making your app progressive enhanced. It's just showing off.
 - I have to rethink the datamodel in the database. The way I store and update information in Mongo is great. But the Model schema is not very efficient and it made development in some ways, somewhat harder.
