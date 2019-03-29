@@ -3,6 +3,8 @@ The assignment was to make a Live Poll with Progressive Enhancement in mind.
 In a poll, users can cast their vote on a question asked by one person.
 Voting results are to be displayed on a central page. The results live update on the page. although that one is not a core functionality.
 
+![alt text](assets/without css compression.png "without css compression")
+
 ##Achievements
 This list displays the inner workings on my way of working on this application.
 
@@ -76,7 +78,10 @@ This assignment was made with PE in mind. The challenge is to make a progressive
 - focused too much on making EVERYTHING SERVER SIDE. This way of thinking is not making your app progressive enhanced. It's just showing off.
 - I have to rethink the datamodel in the database. The way I store and update information in Mongo is great. But the Model schema is not very efficient and it made development in some ways, somewhat harder.
 - Don't just import libraries and packages. Think about what you really need and how much of it you can make yourself.
+- Because I was so focussed on making everything server side I forgot to implement some decent feature detection in my css and js.
 
-###Things I've discovered
+## Things I've discovered
+- HTML on itself can be strong foundation for your application
+- Progressive enhancement is more of a conceptual way of thinking. Not just technically.
 
 
